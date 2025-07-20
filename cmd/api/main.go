@@ -41,6 +41,21 @@ func main() {
 	// Service
 	authService := services.NewAuthService(authRepository)
 
+	// Root endpoint
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.JSON(fiber.Map{
+			"message": "Event Management Backend API",
+			"version": "1.0.0",
+			"endpoints": []string{
+				"/health",
+				"/api/auth/register",
+				"/api/auth/login",
+				"/api/event",
+				"/api/ticket",
+			},
+		})
+	})
+
 	// Health check endpoint
 	app.Get("/health", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
