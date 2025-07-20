@@ -2,6 +2,7 @@ services:
   - type: web
     name: event-management-backend
     env: go
+    plan: free
     buildCommand: go build -o main ./cmd/api
     startCommand: ./main
     envVars:
@@ -36,3 +37,4 @@ databases:
   - name: event-management-db
     databaseName: eventdb
     user: eventuser
+    plan: free
